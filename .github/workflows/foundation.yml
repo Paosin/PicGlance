@@ -1,0 +1,39 @@
+name: Windows foundation
+
+on: [push, pull_request]
+
+jobs:
+  release:
+    runs-on: windows-2025
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: rustup toolchain install stable --profile minimal
+      - run: npm ci
+      - run: node --test src/shared/*.test.ts src/features/viewer/*.test.ts src/features/editor/*.test.ts src/features/compression/*.test.ts src/assets/icons/tests/*.test.ts
+      - run: npm run build
+      - run: cargo +stable test --workspace --locked --all-features
+      - run: cargo +stable test --locked --manifest-path src-tauri/src/desktop/tests/Cargo.toml
+      - run: npm run tauri -- build --no-bundle -- --locked
+      - name: Build Windows installer
+        shell: pwsh
+        run: |
+          $compiler = Join-Path ${env:ProgramFiles(x86)} 'Inno Setup 6/ISCC.exe'
+          $runtime = Join-Path $env:RUNNER_TEMP 'MicrosoftEdgeWebView2RuntimeInstallerX64.exe'
+          Invoke-WebRequest -Uri 'https://go.microsoft.com/fwlink/?LinkId=2124701' -OutFile $runtime
+          ./scripts/package-desktop.ps1 -Exe target/release/picglance.exe -Compiler $compiler -WebView2StandaloneInstaller $runtime
+      - name: Verify Windows installer boundary
+        shell: pwsh
+        run: ./scripts/test-installer-boundary.ps1 -Installer installer/build/PicGlance-2.0.0-x64-Setup-Offline.exe
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PicGlance-Windows-x64
+          path: |
+            target/release/picglance.exe
+            target/release/tools/
+            installer/build/PicGlance-*-x64-Setup-Offline.exe
+            installer/build/PicGlance-*-x64-Portable.zip
+          if-no-files-found: error

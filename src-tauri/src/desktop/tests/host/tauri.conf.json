@@ -1,0 +1,11 @@
+{
+  "productName": "PicGlance Desktop Test",
+  "identifier": "com.picglance.desktop-test",
+  "version": "2.0.0",
+  "build": { "frontendDist": "dist" },
+  "bundle": { "icon": ["../../../../foundation.ico"] },
+  "app": {
+    "windows": [{ "label": "main", "title": "PicGlance Desktop Test", "width": 850, "height": 600 }],
+    "security": { "capabilities": ["host"] }
+  }
+}

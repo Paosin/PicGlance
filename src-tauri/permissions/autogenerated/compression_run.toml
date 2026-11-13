@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-compression-run"
+description = "Enables the compression_run command without any pre-configured scope."
+commands.allow = ["compression_run"]
+
+[[permission]]
+identifier = "deny-compression-run"
+description = "Denies the compression_run command without any pre-configured scope."
+commands.deny = ["compression_run"]

@@ -1,0 +1,35 @@
+# Build
+build/
+target/
+dist/
+node_modules/
+.foundation-tools/
+src-tauri/gen/
+cmake-build-*/
+
+# Qt Creator
+*.user
+*.user.os
+
+# Visual Studio
+.vs/
+*.vcxproj.user
+
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Logs
+log/
+*.log
+
+# Dev artifacts
+aqtinstall.log
+vibe_images/
+documents/
+agents.md
+
+# IDE
+.idea/
+.vscode/

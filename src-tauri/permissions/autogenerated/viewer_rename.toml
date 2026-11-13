@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-viewer-rename"
+description = "Enables the viewer_rename command without any pre-configured scope."
+commands.allow = ["viewer_rename"]
+
+[[permission]]
+identifier = "deny-viewer-rename"
+description = "Denies the viewer_rename command without any pre-configured scope."
+commands.deny = ["viewer_rename"]

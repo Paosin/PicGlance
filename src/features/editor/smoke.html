@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>PicGlance editor smoke test</title></head>
+<body>
+<div id="test" style="width: 850px; height: 560px"></div>
+<script type="module">
+import { mountEditor } from './index.ts';
+import { createCompressionDialog } from '../compression/index.ts';
+import '../../shared/shell.css';
+
+const jpeg = await (await fetch('/.foundation-tools/first-image.jpg')).blob();
+const original = await createImageBitmap(jpeg);
+const source = document.createElement('canvas');
+source.width = original.width;
+source.height = original.height;
+const preview = source.getContext('2d');
+const host = document.getElementById('test');
+const writes = [];
+let operations = [];
+let exits = 0;
+const image = {
+  id: 'test', name: 'testorig.jpg', sourcePath: 'testorig.jpg', width: original.width,
+  height: original.height, frameCount: 1, sizeBytes: 0, preview: { id: 'source', mimeType: 'image/jpeg' },
+};
+const editor = await mountEditor(host, image, {
+  locale: 'en',
+  onCancel: () => { exits++; },
+  async open() {
+    return {
+      async render(edits) {
+        operations = structuredClone(edits);
+        preview.drawImage(original, 0, 0);
+        return await new Promise(resolve => source.toBlob(async blob => resolve(await blob.arrayBuffer())));
+      },
+      async save(edits, mode) { writes.push({ edits, mode }); return true; },
+      async exportImage() { return { ok: false, error: { code: 'unsupported' } }; },
+      dispose() { original.close(); },
+    };
+  },
+});
+let compressionCancels = 0;
+function openCompression() {
+  const { dialog } = createCompressionDialog(image, image.preview, {
+    async read() { return { ok: true, value: await jpeg.arrayBuffer() }; },
+    async start() {
+      let finish;
+      const result = new Promise(resolve => { finish = resolve; });
+      return { ok: true, value: {
+        result,
+        subscribe(listener) { listener(0.5); return () => {}; },
+        async cancel() { compressionCancels++; finish({ ok: false, error: { code: 'cancelled' } }); },
+      } };
+    },
+    async save() { return { ok: true }; },
+  }, 'en');
+  document.body.append(dialog);
+  dialog.showModal();
+}
+window.smoke = { editor, writes, openCompression, get compressionCancels() { return compressionCancels; },
+  get operations() { return operations; }, get exits() { return exits; } };
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+.compression-dialog {
+  width: min(520px, calc(100% - 2rem));
+  height: min(600px, calc(100% - 2rem));
+  box-sizing: border-box;
+  border: 1px solid var(--border, #555);
+  border-radius: 8px;
+  background: var(--surface, Canvas);
+  color: var(--text, CanvasText);
+  padding: 1rem;
+}
+
+.compression-dialog::backdrop { background: rgb(0 0 0 / 50%); }
+.compression-header { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-bottom: 1rem; }
+.compression-header h2 { margin: 0; font-size: 1.15rem; }
+.compression-close { flex: none; width: 32px; padding: 0; }
+.compression-dialog [hidden] { display: none; }
+
+.compression-controls, .compression-comparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .75rem;
+}
+
+.compression-controls label {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .4rem;
+}
+
+.compression-controls input, .compression-controls select { max-width: 100%; }
+.compression-actions { grid-column: span 2; display: flex; gap: .5rem; justify-content: end; }
+.compression-dialog progress { width: 100%; }
+.compression-comparison figure { margin: 0; }
+.compression-comparison img { width: 100%; height: 220px; object-fit: contain; }
+.compression-metadata { margin-top: .75rem; }
+.compression-color-stats {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: .25rem .75rem;
+}
+.compression-color-stats dd { margin: 0; font-variant-numeric: tabular-nums; }
+.compression-reduced-size { color: #6ccb5f; }
+:root[data-theme="light"] .compression-reduced-size { color: #107c10; }
+.compression-difference { color: var(--accent, #73adff); }

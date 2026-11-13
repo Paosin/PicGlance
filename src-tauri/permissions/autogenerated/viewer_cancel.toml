@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-viewer-cancel"
+description = "Enables the viewer_cancel command without any pre-configured scope."
+commands.allow = ["viewer_cancel"]
+
+[[permission]]
+identifier = "deny-viewer-cancel"
+description = "Denies the viewer_cancel command without any pre-configured scope."
+commands.deny = ["viewer_cancel"]

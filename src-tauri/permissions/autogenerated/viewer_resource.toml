@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-viewer-resource"
+description = "Enables the viewer_resource command without any pre-configured scope."
+commands.allow = ["viewer_resource"]
+
+[[permission]]
+identifier = "deny-viewer-resource"
+description = "Denies the viewer_resource command without any pre-configured scope."
+commands.deny = ["viewer_resource"]

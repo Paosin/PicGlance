@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-desktop-associations"
+description = "Enables the desktop_associations command without any pre-configured scope."
+commands.allow = ["desktop_associations"]
+
+[[permission]]
+identifier = "deny-desktop-associations"
+description = "Denies the desktop_associations command without any pre-configured scope."
+commands.deny = ["desktop_associations"]

@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-compression-cancel"
+description = "Enables the compression_cancel command without any pre-configured scope."
+commands.allow = ["compression_cancel"]
+
+[[permission]]
+identifier = "deny-compression-cancel"
+description = "Denies the compression_cancel command without any pre-configured scope."
+commands.deny = ["compression_cancel"]

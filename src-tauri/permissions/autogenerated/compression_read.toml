@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-compression-read"
+description = "Enables the compression_read command without any pre-configured scope."
+commands.allow = ["compression_read"]
+
+[[permission]]
+identifier = "deny-compression-read"
+description = "Denies the compression_read command without any pre-configured scope."
+commands.deny = ["compression_read"]
