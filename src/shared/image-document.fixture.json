@@ -1,0 +1,10 @@
+{
+  "id": "document-1",
+  "sourcePath": "C:\\Pictures\\sample.jpg",
+  "name": "sample.jpg",
+  "width": 4000,
+  "height": 3000,
+  "frameCount": 1,
+  "sizeBytes": 5000000,
+  "preview": { "id": "preview-1", "mimeType": "image/jpeg" }
+}

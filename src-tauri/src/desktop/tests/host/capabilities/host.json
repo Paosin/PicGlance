@@ -1,0 +1,5 @@
+{
+  "identifier": "host",
+  "windows": ["main"],
+  "permissions": ["core:default"]
+}

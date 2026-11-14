@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-editor-render"
+description = "Enables the editor_render command without any pre-configured scope."
+commands.allow = ["editor_render"]
+
+[[permission]]
+identifier = "deny-editor-render"
+description = "Denies the editor_render command without any pre-configured scope."
+commands.deny = ["editor_render"]

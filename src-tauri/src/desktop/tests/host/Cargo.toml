@@ -1,0 +1,22 @@
+[package]
+name = "picglance-desktop-host"
+version = "2.0.0"
+edition = "2021"
+
+[workspace]
+
+[[bin]]
+name = "picglance-desktop-host"
+path = "main.rs"
+
+[build-dependencies]
+tauri-build = "2"
+
+[dependencies]
+semver = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tauri = { version = "2", features = ["tray-icon"] }
+tauri-plugin-single-instance = "2.5.5"
+winreg = "0.56"
+windows-sys = { version = "0.61", features = ["Win32_Networking_WinHttp", "Win32_UI_Shell", "Win32_UI_WindowsAndMessaging"] }

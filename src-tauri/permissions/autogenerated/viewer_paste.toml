@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-viewer-paste"
+description = "Enables the viewer_paste command without any pre-configured scope."
+commands.allow = ["viewer_paste"]
+
+[[permission]]
+identifier = "deny-viewer-paste"
+description = "Denies the viewer_paste command without any pre-configured scope."
+commands.deny = ["viewer_paste"]

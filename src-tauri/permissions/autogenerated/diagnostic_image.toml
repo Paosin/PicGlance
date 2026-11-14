@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-diagnostic-image"
+description = "Enables the diagnostic_image command without any pre-configured scope."
+commands.allow = ["diagnostic_image"]
+
+[[permission]]
+identifier = "deny-diagnostic-image"
+description = "Denies the diagnostic_image command without any pre-configured scope."
+commands.deny = ["diagnostic_image"]

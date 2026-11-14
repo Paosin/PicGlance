@@ -1,0 +1,17 @@
+[package]
+name = "picglance-compression"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+path = "mod.rs"
+
+[dependencies]
+gif = "0.14"
+image = { version = "0.25.10", default-features = false, features = ["jpeg", "png", "gif", "webp", "bmp"] }
+libwebp-sys = { package = "libwebp-sys2", version = "0.2.0", features = ["mux", "0_5", "1_1"] }
+mozjpeg = { version = "0.10", default-features = false }
+
+[[example]]
+name = "real_samples"
+path = "tests/samples/real_samples.rs"

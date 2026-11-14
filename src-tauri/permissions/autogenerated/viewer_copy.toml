@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-viewer-copy"
+description = "Enables the viewer_copy command without any pre-configured scope."
+commands.allow = ["viewer_copy"]
+
+[[permission]]
+identifier = "deny-viewer-copy"
+description = "Denies the viewer_copy command without any pre-configured scope."
+commands.deny = ["viewer_copy"]
